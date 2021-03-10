@@ -2,22 +2,23 @@
 This file stores helper functions related to Discord.
 """
 # Handle imports
-from config import config, client
+from config import config, client, logger
 import discord
 
 # Define functions
-async def setup_bot(guild):
+async def setup_bot(update_avatar=False):
     """
     Setup the bot user.
     This includes profile picture and status.
     :return:
     """
-    avatar_file = config["general"]["avatar_file"]
+    avatar_file = config["general"]["avatar file"]
     name = config["general"]["name"]
     activity = config["general"]["activity"]
 
-    with open(avatar_file, 'rb') as f:
-        await client.user.edit(avatar=f.read())
+    if update_avatar:
+        with open(avatar_file, 'rb') as f:
+            await client.user.edit(avatar=f.read())
 
     await set_status(discord.Game(activity))
 

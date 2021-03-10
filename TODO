@@ -1,0 +1,12 @@
+* Implement stream monitoring/reporting
+* Lounges
+** New
+** Delete
+** Kick
+** Lock
+** Bypass
+** Admin
+* Roles
+** Setup
+** Monitoring + Assignment
+* Possibly make command for adjusting server settings

@@ -62,7 +62,9 @@ def get_logger(logger_name):
     logger.setLevel(logging.DEBUG)
     logger.addHandler(get_console_handler())
     logger.addHandler(get_file_handler())
-    if testing is False:
-        logger.addHandler(get_email_handler())
+    logger.addHandler(get_email_handler())
     logger.propagate = False
     return logger
+
+# Setup logs
+logger = get_logger("app")

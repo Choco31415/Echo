@@ -18,3 +18,66 @@
 03/09 01:29:40 AM - app - WARNING : Warning
 03/09 01:29:40 AM - app - ERROR : Error
 03/09 01:29:40 AM - app - CRITICAL : Critical
+03/09 10:30:31 PM - app - INFO : The bot has launched!
+03/09 10:31:15 PM - app - INFO : The bot has launched!
+03/09 10:32:11 PM - app - INFO : Hi
+03/09 10:32:13 PM - app - INFO : The bot has launched!
+03/09 10:32:58 PM - app - INFO : Hi
+03/09 10:33:01 PM - app - INFO : The bot has launched!
+03/09 10:33:21 PM - app - INFO : Hi
+03/09 10:33:29 PM - app - INFO : The bot has launched!
+03/09 10:34:10 PM - app - INFO : Hi
+03/09 10:34:13 PM - app - INFO : The bot has launched!
+03/09 10:34:19 PM - app - INFO : The bot has launched!22
+03/09 11:02:27 PM - app - ERROR : Uh oh, an error has happened!Traceback (most recent call last):
+  File "/Users/ErnieParke/Documents/PyCharm/Echo/main.py", line 19, in on_ready
+    a /= 0
+ZeroDivisionError: division by zero
+
+03/09 11:03:43 PM - app - ERROR : Uh oh, an error has happened! Traceback (most recent call last):
+  File "/Users/ErnieParke/Documents/PyCharm/Echo/main.py", line 19, in on_ready
+    a /= 0
+ZeroDivisionError: division by zero
+
+03/09 11:04:26 PM - app - ERROR : Uh oh, an error has happened! Traceback (most recent call last):
+  File "/Users/ErnieParke/Documents/PyCharm/Echo/main.py", line 19, in on_ready
+    a /= 0
+ZeroDivisionError: division by zero
+
+03/09 11:04:34 PM - app - ERROR : Uh oh, an error has happened! Traceback (most recent call last):
+  File "/Users/ErnieParke/Documents/PyCharm/Echo/main.py", line 20, in on_ready
+    a /= 0
+ZeroDivisionError: division by zero
+
+03/09 11:07:31 PM - app - ERROR : Uh oh, an error has happened! Traceback (most recent call last):
+  File "/Users/ErnieParke/Documents/PyCharm/Echo/main.py", line 20, in on_ready
+    a /= 0
+ZeroDivisionError: division by zero
+
+03/09 11:08:02 PM - app - ERROR : Uh oh, an error has happened! Traceback (most recent call last):
+  File "/Users/ErnieParke/Documents/PyCharm/Echo/main.py", line 20, in on_ready
+    a /= 0
+ZeroDivisionError: division by zero
+
+03/09 11:17:16 PM - app - ERROR : Uh oh, an error has happened! Traceback (most recent call last):
+  File "/Users/ErnieParke/Documents/PyCharm/Echo/main.py", line 20, in on_ready
+    a /= 0
+ZeroDivisionError: division by zero
+
+03/09 11:17:47 PM - app - ERROR : Uh oh
+03/09 11:17:50 PM - app - ERROR : Uh oh, an error has happened! Traceback (most recent call last):
+  File "/Users/ErnieParke/Documents/PyCharm/Echo/main.py", line 20, in on_ready
+    a /= 0
+ZeroDivisionError: division by zero
+
+03/09 11:18:55 PM - app - ERROR : Uh oh
+03/09 11:19:00 PM - app - ERROR : Uh oh, an error has happened! Traceback (most recent call last):
+  File "/Users/ErnieParke/Documents/PyCharm/Echo/main.py", line 20, in on_ready
+    a /= 0
+ZeroDivisionError: division by zero
+
+03/09 11:19:25 PM - app - ERROR : Uh oh, an error has happened! Traceback (most recent call last):
+  File "/Users/ErnieParke/Documents/PyCharm/Echo/main.py", line 20, in on_ready
+    a /= 0
+ZeroDivisionError: division by zero
+
