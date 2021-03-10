@@ -7,7 +7,7 @@ Note: Done in code so as to separate login details
 import logging
 import sys
 import logging.handlers as handlers
-from config import config
+from config import config, testing
 
 # Define vars
 log_file = "Logs/Log.out"
@@ -62,6 +62,7 @@ def get_logger(logger_name):
     logger.setLevel(logging.DEBUG)
     logger.addHandler(get_console_handler())
     logger.addHandler(get_file_handler())
-    logger.addHandler(get_email_handler())
+    if testing is False:
+        logger.addHandler(get_email_handler())
     logger.propagate = False
     return logger
