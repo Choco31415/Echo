@@ -24,6 +24,23 @@ async def setup_bot(guild):
 async def set_status(activity=None):
     await client.change_presence(activity=activity)
 
+def get_embed(title, sections):
+    """
+    Create and format a standard Discord embed.
+    :param title:
+    :param sections:
+    :return:
+    """
+    c = int(config["general"]["message color"], 16)
+    embed = discord.Embed(title=title, color=c)
+    for s in sections:
+        embed.add_field(
+        name=s[0],
+        value=s[1],
+        inline=False)
+
+    return embed
+
 async def get_dm_channel(user):
     """
     Get the dm channel of a user.
