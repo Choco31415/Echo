@@ -36,19 +36,7 @@ async def on_ready():
     """
     logger.info("The bot is launching!")
     await setup_bot()
-    a = 1
-    a /= 0
-    logger.info("The bot has launched! " + a)
-
-@client.event
-@error_handler
-async def on_message(message):
-    """
-    This function is called when a message is posted.
-    :param message: Message object.
-    :return: NA
-    """
-    pass
+    logger.info("The bot has launched!")
 
 @client.event
 @error_handler
