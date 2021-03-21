@@ -13,6 +13,7 @@ async def setup_bot(update_avatar=False):
     This includes profile picture and status.
     :return:
     """
+    # Setup the account
     avatar_file = config["general"]["avatar file"]
     name = config["general"]["name"]
     activity = config["general"]["activity"]
@@ -22,6 +23,23 @@ async def setup_bot(update_avatar=False):
             await bot.user.edit(avatar=f.read())
 
     await set_status(discord.Game(activity))
+
+    # Next we synchronize the database
+
+    # Check that guilds are recorded
+    for guild in bot.guilds:
+        if app_db.execute('SELECT * FROM guild WHERE guild_id = ?', (guild.id,)).fetchone() is None:
+            print(guild.id)
+            app_db.execute(
+                'INSERT INTO guild (guild_id)'
+                ' VALUES (?)',
+                (guild.id,)
+            )
+            app_db.commit()
+
+    # And only those guilds
+    for guild in app_db.execute('SELECT * FROM guild', ).fetchall():
+        _ = get_guild(guild["guild_id"])
 
 async def set_status(activity=None):
     await bot.change_presence(activity=activity)
@@ -37,7 +55,7 @@ async def get_dm_channel(user):
         dm_channel = await user.create_dm()
     return dm_channel
 
-async def get_guild(server_id):
+def get_guild(guild_id):
     """
     Get a guild based on id.
 
@@ -45,10 +63,10 @@ async def get_guild(server_id):
     :param server_id: int
     :return: A guild object or None
     """
-    guild = get(bot.guilds, id=server_id)
+    guild = get(bot.guilds, id=guild_id)
 
     # Check for desync condition
     if guild is None:
         # Remove the server from the db
-        app_db.execute('DELETE FROM server WHERE id = ?', (server_id,))
+        app_db.execute('DELETE FROM guild WHERE guild_id = ?', (guild_id,))
         app_db.commit()

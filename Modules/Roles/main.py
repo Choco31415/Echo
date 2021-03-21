@@ -15,9 +15,9 @@ from permissions import lounge_tc_read_only, lounge_tc_allow
 async def setup_roles():
     # Get all servers where this module is enabled
     servers = app_db.execute(
-        'SELECT s.id, '
-        ' FROM server s'
-        ' WHERE s.roles_enabled = TRUE',
+        'SELECT server_id, '
+        ' FROM server'
+        ' WHERE roles_enabled = TRUE',
     ).fetchall()
 
     # Go setup the module
@@ -42,6 +42,23 @@ async def setup_roles_for_server(guild):
                                              overwrite=lounge_tc_allow)
 
     # Clear channel
+    await roles_channel.purge()
 
-    # Setup channel
+    # Make the necessary posts
+    role_categories = app_db.execute(
+        'SELECT category_id, guild_id'
+        ' FROM role_categories'
+        ' WHERE guild_id = ?',
+        (guild.id,)
+    ).fetchall()
 
+    for role_category in role_categories:
+        roles = app_db.execute(
+            'SELECT symbol, role, category_id'
+            ' FROM role'
+            ' WHERE category_id = ?',
+            (role_category["category_id"],)
+        ).fetchall()
+
+        for role in roles:
+            print(role)
