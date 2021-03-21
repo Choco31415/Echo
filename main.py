@@ -2,12 +2,13 @@
 The main entry point to the program.
 """
 # Handle imports
-from config import config, client
+from config import config, bot
 import logging_config
 import discord_helpers
 import events
+import generic_commands
 
 # Handle vars
 
 # Run code
-client.run(config["tokens"]["discord_token"])
+bot.run(config["tokens"]["discord_token"])

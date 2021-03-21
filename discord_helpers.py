@@ -2,7 +2,7 @@
 This file stores helper functions related to Discord.
 """
 # Handle imports
-from config import config, client, logger
+from config import config, bot, logger
 import discord
 
 # Define functions
@@ -18,12 +18,12 @@ async def setup_bot(update_avatar=False):
 
     if update_avatar:
         with open(avatar_file, 'rb') as f:
-            await client.user.edit(avatar=f.read())
+            await bot.user.edit(avatar=f.read())
 
     await set_status(discord.Game(activity))
 
 async def set_status(activity=None):
-    await client.change_presence(activity=activity)
+    await bot.change_presence(activity=activity)
 
 def get_embed(title, sections):
     """

@@ -9,4 +9,22 @@
 * Roles
 ** Setup
 ** Monitoring + Assignment
+* Help
+* Error
 * Possibly make command for adjusting server settings
+
+== General ==
+!help         :: get help on a command
+!find         :: finds what voice channel a member is in
+
+== Lounge ==
+!admin        :: adds/removes a player as a lounge admin
+!admin_list   :: list the admins of a lounge
+!bypass       :: allow/reset a player to bypass a locked lounge
+!lock         :: locks a lounge, making it private
+!delete       :: deletes a lounge
+!kick         :: kicks a player from a lounge
+!lounge, l    :: creates a lounge
+
+== Owner Only ==
+!error        :: Submit an errror report

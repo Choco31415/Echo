@@ -2,7 +2,7 @@
 This is the primary Discord file for handling events as they come in.
 """
 # Imports
-from config import client, logger
+from config import bot, logger
 from discord_helpers import setup_bot
 import sys
 import traceback
@@ -27,7 +27,7 @@ def error_handler(func):
 
     return wrapper
 
-@client.event
+@bot.event
 @error_handler
 async def on_ready():
     """
@@ -36,9 +36,16 @@ async def on_ready():
     """
     logger.info("The bot is launching!")
     await setup_bot()
+    logger.info("The account is setup.")
+    #await setup_roles()
+    logger.info("Roles are setup.")
+    #await setup_lounges()
+    logger.info("Lounges are setup.")
+    #await setup_stream_monitoring()
+    logger.info("Twitch monitoring is setup.")
     logger.info("The bot has launched!")
 
-@client.event
+@bot.event
 @error_handler
 async def on_member_join(member):
     """
@@ -48,7 +55,7 @@ async def on_member_join(member):
     """
     pass
 
-@client.event
+@bot.event
 @error_handler
 async def on_voice_state_update(member, before, after):
     """
@@ -61,7 +68,7 @@ async def on_voice_state_update(member, before, after):
     """
     pass
 
-@client.event
+@bot.event
 @error_handler
 async def on_guild_join(guild):
     """

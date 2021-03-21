@@ -4,8 +4,8 @@ Imports and holds the conf file. Nothing else.
 # Handle imports
 import configparser
 import sqlite3
-import discord
 import logging
+from discord.ext import commands
 
 # Define values
 conf_file = "Data/conf.ini"
@@ -19,6 +19,6 @@ config.read(conf_file)
 
 app_db = sqlite3.connect(app_db_file)
 
-client = discord.Client()
-
 logger = logging.getLogger("app")
+
+bot = commands.Bot(command_prefix='.')
