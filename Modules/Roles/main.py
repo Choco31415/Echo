@@ -46,18 +46,18 @@ async def setup_roles_for_server(guild):
 
     # Make the necessary posts
     role_categories = app_db.execute(
-        'SELECT category_id, guild_id'
-        ' FROM role_categories'
+        'SELECT rg_id, guild_id'
+        ' FROM role_groups'
         ' WHERE guild_id = ?',
         (guild.id,)
     ).fetchall()
 
     for role_category in role_categories:
         roles = app_db.execute(
-            'SELECT symbol, role, category_id'
+            'SELECT symbol, role, rg_id'
             ' FROM role'
-            ' WHERE category_id = ?',
-            (role_category["category_id"],)
+            ' WHERE rg_id = ?',
+            (role_category["rg_id"],)
         ).fetchall()
 
         for role in roles:

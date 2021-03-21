@@ -11,8 +11,8 @@ CREATE TABLE guild (
   twitch_enabled BOOLEAN DEFAULT FALSE
 );
 
-CREATE TABLE role_category (
-  category_id INTEGER PRIMARY KEY AUTOINCREMENT,
+CREATE TABLE role_group (
+  rg_id INTEGER PRIMARY KEY AUTOINCREMENT,
   guild_id INTEGER NOT NULL,
   FOREIGN KEY (guild_id) REFERENCES guild (guild_id)
 );
@@ -20,8 +20,8 @@ CREATE TABLE role_category (
 CREATE TABLE role (
   symbol TEXT NOT NULL,
   role INTEGER NOT NULL,
-  category_id INTEGER NOT NULL,
-  FOREIGN KEY (category_id) REFERENCES role_category (category_id)
+  rg_id INTEGER NOT NULL,
+  FOREIGN KEY (rg_id) REFERENCES role_group (rg_id)
 );
 
 CREATE TABLE stream_channel (
