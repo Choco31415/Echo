@@ -2,8 +2,9 @@
 This file stores helper functions related to Discord.
 """
 # Handle imports
-from config import config, bot, logger
+from config import config, bot, app_db
 import discord
+from discord.utils import get
 
 # Define functions
 async def setup_bot(update_avatar=False):
@@ -25,23 +26,6 @@ async def setup_bot(update_avatar=False):
 async def set_status(activity=None):
     await bot.change_presence(activity=activity)
 
-def get_embed(title, sections):
-    """
-    Create and format a standard Discord embed.
-    :param title:
-    :param sections:
-    :return:
-    """
-    c = int(config["general"]["message color"], 16)
-    embed = discord.Embed(title=title, color=c)
-    for s in sections:
-        embed.add_field(
-        name=s[0],
-        value=s[1],
-        inline=False)
-
-    return embed
-
 async def get_dm_channel(user):
     """
     Get the dm channel of a user.
@@ -52,3 +36,19 @@ async def get_dm_channel(user):
     if dm_channel is None:
         dm_channel = await user.create_dm()
     return dm_channel
+
+async def get_guild(server_id):
+    """
+    Get a guild based on id.
+
+    Returns None on failure.
+    :param server_id: int
+    :return: A guild object or None
+    """
+    guild = get(bot.guilds, id=server_id)
+
+    # Check for desync condition
+    if guild is None:
+        # Remove the server from the db
+        app_db.execute('DELETE FROM server WHERE id = ?', (server_id,))
+        app_db.commit()
