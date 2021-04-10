@@ -1,5 +1,5 @@
-Data/conf.ini
-Logs/
+app/data/conf.ini
+app/logs/
 
 # Created by https://www.toptal.com/developers/gitignore/api/macos,windows,linux,intellij,python
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos,windows,linux,intellij,python

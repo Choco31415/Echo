@@ -3,15 +3,16 @@ Imports and holds the conf file. Nothing else.
 """
 # Handle imports
 import configparser
-import sqlite3
 import logging
+
 from discord.ext import commands
+
 from db import *
 
 # Define values
-conf_file = "Data/conf.ini"
-db_file = 'Data/app.db'
-schema_file = 'Data/schema.sql'
+conf_file = 'data/conf.ini'
+db_file = 'data/app.db'
+schema_file = 'data/schema.sql'
 
 testing = True
 
@@ -21,6 +22,6 @@ config.read(conf_file)
 
 app_db = get_db(db_file)
 
-logger = logging.getLogger("app")
+logger = logging.getLogger("echo")
 
 bot = commands.Bot(command_prefix='.')

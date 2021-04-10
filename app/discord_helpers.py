@@ -2,9 +2,10 @@
 This file stores helper functions related to Discord.
 """
 # Handle imports
-from config import config, bot, app_db
 import discord
 from discord.utils import get
+
+from config import config, bot, app_db
 
 # Define functions
 async def setup_bot(update_avatar=False):
@@ -70,3 +71,17 @@ def get_guild(guild_id):
         # Remove the server from the db
         app_db.execute('DELETE FROM guild WHERE guild_id = ?', (guild_id,))
         app_db.commit()
+
+def basic_embed(title, message):
+    """
+    Get a very basic embed.
+
+    :param message: Message content.
+    :return: Embed object.
+    """
+    c = int(config["general"]["message color"], 16)
+    embed = discord.Embed(color=c,
+                          title=title,
+                          description=message)
+
+    return embed

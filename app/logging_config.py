@@ -5,9 +5,10 @@ Note: Done in code so as to separate login details
 """
 # Define imports
 import logging
-import sys
 import logging.handlers as handlers
-from config import config, testing
+import sys
+
+from config import config
 
 # Define vars
 log_file = "Logs/Log.out"
@@ -67,4 +68,4 @@ def get_logger(logger_name):
     return logger
 
 # Setup logs
-logger = get_logger("app")
+logger = get_logger("echo")

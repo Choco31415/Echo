@@ -2,9 +2,8 @@
 The main entry point to the program.
 """
 # Handle imports
-from config import config, bot
-import logging_config
-import discord_helpers
+from config import bot
+from logging_config import *
 import events
 import generic_commands
 

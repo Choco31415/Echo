@@ -2,11 +2,14 @@
 This is the primary Discord file for handling events as they come in.
 """
 # Imports
-from config import bot, logger
-from discord_helpers import setup_bot
+import functools
 import sys
 import traceback
-import functools
+
+from discord_helpers import setup_bot
+from config import bot, logger
+from modules.roles.main import setup_roles
+
 
 # Variables
 
@@ -37,7 +40,7 @@ async def on_ready():
     logger.info("The bot is launching!")
     await setup_bot()
     logger.info("The account is setup.")
-    #await setup_roles()
+    await setup_roles()
     logger.info("Roles are setup.")
     #await setup_lounges()
     logger.info("Lounges are setup.")

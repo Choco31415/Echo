@@ -14,7 +14,7 @@ print("Running this command will setup the bot for use.")
 print("It will also result in the loss of existing data.")
 answer = input("Do you wish to continue? (Y/N) ")
 
-if answer == "Y":
+if answer.lower() == "y":
     init_db(db_file, schema_file)
     print("The project is setup.")
 else:

@@ -6,22 +6,24 @@ DROP TABLE IF EXISTS twitch_games_followed;
 
 CREATE TABLE guild (
   guild_id INTEGER PRIMARY KEY,
-  roles_enabled BOOLEAN DEFAULT FALSE,
-  lounges_enabled BOOLEAN DEFAULT FALSE,
-  twitch_enabled BOOLEAN DEFAULT FALSE
+  module_roles_enabled BOOLEAN DEFAULT 0,
+  module_lounges_enabled BOOLEAN DEFAULT 0,
+  module_twitch_enabled BOOLEAN DEFAULT 0
 );
 
-CREATE TABLE role_group (
-  rg_id INTEGER PRIMARY KEY AUTOINCREMENT,
+CREATE TABLE role_category (
+  name TEXT NOT NULL,
+  rc_id INTEGER PRIMARY KEY AUTOINCREMENT,
   guild_id INTEGER NOT NULL,
   FOREIGN KEY (guild_id) REFERENCES guild (guild_id)
 );
 
 CREATE TABLE role (
-  symbol TEXT NOT NULL,
+  emoji TEXT NOT NULL,
+  description TEXT NOT NULL,
   role INTEGER NOT NULL,
-  rg_id INTEGER NOT NULL,
-  FOREIGN KEY (rg_id) REFERENCES role_group (rg_id)
+  rc_id INTEGER NOT NULL,
+  FOREIGN KEY (rc_id) REFERENCES role_category (rc_id)
 );
 
 CREATE TABLE stream_channel (
