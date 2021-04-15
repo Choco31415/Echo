@@ -6,24 +6,25 @@ DROP TABLE IF EXISTS twitch_games_followed;
 
 CREATE TABLE guild (
   guild_id INTEGER PRIMARY KEY,
-  module_roles_enabled BOOLEAN DEFAULT 0,
+  module_react_roles_enabled BOOLEAN DEFAULT 0,
   module_lounges_enabled BOOLEAN DEFAULT 0,
   module_twitch_enabled BOOLEAN DEFAULT 0
 );
 
-CREATE TABLE role_category (
+CREATE TABLE react_role_group (
+  react_role_group_id INTEGER PRIMARY KEY AUTOINCREMENT,
   name TEXT NOT NULL,
-  rc_id INTEGER PRIMARY KEY AUTOINCREMENT,
+  description TEXT,
   guild_id INTEGER NOT NULL,
   FOREIGN KEY (guild_id) REFERENCES guild (guild_id)
 );
 
-CREATE TABLE role (
+CREATE TABLE react_role (
+  react_role_id INTEGER NOT NULL,
   emoji TEXT NOT NULL,
-  description TEXT NOT NULL,
-  role INTEGER NOT NULL,
-  rc_id INTEGER NOT NULL,
-  FOREIGN KEY (rc_id) REFERENCES role_category (rc_id)
+  role TEXT NOT NULL,
+  react_role_group_id INTEGER NOT NULL,
+  FOREIGN KEY (react_role_group_id) REFERENCES react_role_group (react_role_group_id)
 );
 
 CREATE TABLE stream_channel (

@@ -19,7 +19,7 @@ async def setup_roles():
     guilds = app_db.execute(
         'SELECT guild_id '
         ' FROM guild'
-        ' WHERE module_roles_enabled = 1',
+        ' WHERE module_react_roles_enabled = 1',
     ).fetchall()
 
     # Go setup the module
@@ -45,29 +45,29 @@ async def setup_roles_for_server(guild):
     await roles_channel.purge()
 
     # Make posts
-    role_categories = app_db.execute(
-        'SELECT name, rc_id, guild_id'
-        ' FROM role_category'
+    react_role_groups = app_db.execute(
+        'SELECT name, description, react_role_group_id'
+        ' FROM react_role_group'
         ' WHERE guild_id = ?',
         (guild.id,)
     ).fetchall()
 
     await roles_channel.send("React to the messages below to give yourself roles!")
 
-    for role_category in role_categories:
-        roles = app_db.execute(
+    for group in react_role_groups:
+        react_roles = app_db.execute(
             'SELECT *'
-            ' FROM role'
-            ' WHERE rc_id = ?',s
-            (role_category["rc_id"],)
+            ' FROM react_role'
+            ' WHERE react_role_group_id = ?',
+            (group["react_role_group_id"],)
         ).fetchall()
 
-        message = ""
-        for role in roles:
-            message += "{} - {}\n".format(role["emoji"], role["description"])
+        message = group["description"] + "\n"
+        for role in react_roles:
+            message += "{}: {}\n".format(role["emoji"], role["role"])
 
-        embed = basic_embed(role_category["name"], message=message)
+        embed = basic_embed(group["name"], message=message)
         msg = roles_channel.send(embed=embed)
 
-        for role in roles:
+        for role in react_roles:
             await msg.add_reaction(role["emoji"])

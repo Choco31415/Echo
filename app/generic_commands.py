@@ -53,7 +53,7 @@ async def announcement(ctx, channel, *, message):
 @bot.command()
 @commands.is_owner()
 async def toggle_module(ctx, module):
-    modules = ["roles", "lounges", "twitch"]
+    modules = ["react_roles", "lounges", "twitch"]
 
     if not module in modules:
         ctx.send("{} is not a valid module.".format(module))
@@ -76,7 +76,7 @@ async def toggle_module(ctx, module):
         app_db.commit()
 
         # Run code
-        if module == "roles":
+        if module == "react_roles":
             await setup_roles_for_server(ctx.guild)
 
         # Report
